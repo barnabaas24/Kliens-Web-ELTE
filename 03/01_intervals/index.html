@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    <!-- Template speciális elem -->
+    <!-- Nem jeleneik meg a dokumentumba de a memóriában benne van -->
+    <!-- Hatékonyan lemásolható -->
+    <!-- Deklaratív -->
+    <template id="interval-template">
+        <!-- Akár stílust is megadhatunk -->
+        <!-- De ez dokumentum szinten érvényes lesz -->
+        <!-- Nincs enkapszulálva, kiszivárog a CSS -> később probléma lehet -->
+        <style>
+            .error {
+                color: darkred;
+            }
+        </style>
+
+        <input type="date" name="datum[]">
+        <input type="time" name="tol[]">
+        <input type="time" name="ig[]">
+    </template>
+
+    <template id="interval-group-template">
+        <button type="button">+</button>
+    </template>
+
+    <form action="">
+        <interval-input-group>
+            <interval-input></interval-input>
+            <interval-input></interval-input>
+        </interval-input-group>
+
+        <button>Küldés</button>
+    </form>
+    <script src="script.js"></script>
+
+    <div class="error">
+        asdasdasda
+    </div>
+
+    <style>
+        .error {
+            padding: 1rem;
+            background-color: darkred;
+            border-radius: 0.5rem;
+        }
+    </style>
+</body>
+</html>

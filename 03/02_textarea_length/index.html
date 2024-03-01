@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .error {
+            padding: 1rem;
+            background-color: darkred;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <template id="textarea-length">
+        <style>
+            .error {
+                color: darkred;
+            }
+        </style>
+        
+        <textarea name="review"></textarea>
+        <span><span>0</span> karakter</span>
+    </template>
+
+    <form action="">
+        <textarea-length></textarea-length>
+        <button>Küldés</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

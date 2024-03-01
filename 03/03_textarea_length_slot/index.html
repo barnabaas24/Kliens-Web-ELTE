@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .error {
+            padding: 1rem;
+            background-color: darkred;
+            border-radius: 0.5rem;
+        }
+
+        textarea {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <template id="textarea-length">
+        <style>
+            .error {
+                color: darkred;
+            }
+        </style>
+        
+        <!-- slot -->
+        <!-- speciális html elem, ami template-be ágyazható -->
+        <!-- két dologra használható: -->
+        <!-- ablak ki a shadow domból -->
+        <!-- rugalmas tartalmú elemek esetén a gyerek elemek helyének definiálása -->
+        <!-- probléma ha ablakként használjuk megtöri az enkapszulációt -->
+        <slot name="review"></slot>
+        <span><span>0</span> karakter</span>
+    </template>
+
+    <form action="">
+        <textarea-length>
+            <textarea slot="review" name="review"></textarea>
+        </textarea-length>
+        <button>Küldés</button>
+    </form>
+    
+    <script src="script.js"></script>
+</body>
+</html>

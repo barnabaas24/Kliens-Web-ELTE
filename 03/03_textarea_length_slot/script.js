@@ -1,27 +1,27 @@
 class TextareaWithLength extends HTMLElement {
-    /**
-     * @type {HTMLTemplateElement}
-     */
-    static #template = document.querySelector('template#textarea-length');
+  /**
+   * @type {HTMLTemplateElement}
+   */
+  static #template = document.querySelector("template#textarea-length");
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        const shadow = this.attachShadow({mode: 'closed'});
+    const shadow = this.attachShadow({ mode: "closed" });
 
-        shadow.append(TextareaWithLength.#template.content.cloneNode(true));
+    shadow.append(TextareaWithLength.#template.content.cloneNode(true));
 
-        const textarea = this.querySelector('textarea');
-        const infoSpan = shadow.querySelector('span');
+    const textarea = this.querySelector("textarea");
+    const infoSpan = shadow.querySelector("span");
 
-        const countSpan = infoSpan.querySelector('span');
+    const countSpan = infoSpan.querySelector("span");
 
-        textarea.addEventListener('input', () => {
-            countSpan.innerText = textarea.value.length;
+    textarea.addEventListener("input", () => {
+      countSpan.innerText = textarea.value.length;
 
-            infoSpan.classList.toggle('error', textarea.value.length > 32);
-        })
-    }
+      infoSpan.classList.toggle("error", textarea.value.length > 32);
+    });
+  }
 }
 
-customElements.define('textarea-length', TextareaWithLength);
+customElements.define("textarea-length", TextareaWithLength);

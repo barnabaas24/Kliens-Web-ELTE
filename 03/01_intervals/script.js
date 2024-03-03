@@ -1,53 +1,52 @@
 class IntervalInput extends HTMLElement {
-    // static - osztályszintű
-    // # - privát
-    /**
-     * @type {HTMLTemplateElement}
-     */
-    static #template = document.querySelector('template#interval-template');
+  // static - osztályszintű
+  // # - privát
+  /**
+   * @type {HTMLTemplateElement}
+   */
+  static #template = document.querySelector("template#interval-template");
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        // template tartalma a content adattagon keresztül érhető el
-        // cloneNode lemásolja
-        // true: mély másolat (szinte mindig az kell)
-        this.append(IntervalInput.#template.content.cloneNode(true))
+    // template tartalma a content adattagon keresztül érhető el
+    // cloneNode lemásolja
+    // true: mély másolat (szinte mindig az kell)
+    this.append(IntervalInput.#template.content.cloneNode(true));
 
-        const from = this.querySelector('input[name="tol[]"]');
-        const to = this.querySelector('input[name="ig[]"]');
+    const from = this.querySelector('input[name="tol[]"]');
+    const to = this.querySelector('input[name="ig[]"]');
 
+    this.addEventListener("input", () => {
+      const error =
+        to.value !== "" && from.value !== "" && to.value <= from.value;
 
-        this.addEventListener('input', () => {
-            const error = to.value !== "" && from.value !== "" && to.value <= from.value;
-
-            from.classList.toggle('error', error);
-            to.classList.toggle('error', error);
-        })
-    }
+      from.classList.toggle("error", error);
+      to.classList.toggle("error", error);
+    });
+  }
 }
 
-customElements.define('interval-input', IntervalInput);
+customElements.define("interval-input", IntervalInput);
 
 class IntervalInputGroup extends HTMLElement {
-    /**
-     * @type {HTMLTemplateElement}
-     */
-    static #template = document.querySelector('template#interval-group-template');
+  /**
+   * @type {HTMLTemplateElement}
+   */
+  static #template = document.querySelector("template#interval-group-template");
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.append(IntervalInputGroup.#template.content.cloneNode(true));
-        this.querySelector('button').addEventListener('click', this.add);
-    }
+    this.append(IntervalInputGroup.#template.content.cloneNode(true));
+    this.querySelector("button").addEventListener("click", this.add);
+  }
 
-    // eseménykezelőként hozzáadás leköti a this-t
-    // kivéve ha az eseménykezelőként hozzáadott függvény arrow function
-    add = () => {
-        this.prepend(new IntervalInput())
-    }
+  // eseménykezelőként hozzáadás leköti a this-t
+  // kivéve ha az eseménykezelőként hozzáadott függvény arrow function
+  add = () => {
+    this.prepend(new IntervalInput());
+  };
 }
 
-
-customElements.define('interval-input-group', IntervalInputGroup);
+customElements.define("interval-input-group", IntervalInputGroup);

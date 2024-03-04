@@ -13,9 +13,9 @@ class LengthyInput extends HTMLInputElement {
       );
       const percent = (this.value.length / this.maxLength) * 100;
 
-      this.style.borderImageSource = this.color
-        ? `linear-gradient(to right, ${this.color} ${percent}%, hsla(0, 0%, 90%, 1) ${percent}% 100%)`
-        : `linear-gradient(to right, orange ${percent}%, hsla(0, 0%, 90%, 1) ${percent}% 100%)`;
+      const actualColor = this.color ?? "orange";
+
+      this.style.borderImageSource = `linear-gradient(to right, ${actualColor} ${percent}%, hsla(0, 0%, 90%, 1) ${percent}% 100%)`;
     });
   }
 

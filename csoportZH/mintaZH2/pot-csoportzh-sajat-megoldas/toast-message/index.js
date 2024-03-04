@@ -14,7 +14,7 @@ class ToastMessage extends HTMLElement {
     if (!this.attributes.closable) {
       closeButton.hidden = true;
     } else {
-      closeButton.addEventListener("click", (e) => {
+      closeButton.addEventListener("click", () => {
         this.remove();
       });
     }

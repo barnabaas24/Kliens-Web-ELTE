@@ -9,7 +9,8 @@ function onObserve(entries) {
   for (const entry of entries) {
     if (entry.isIntersecting) {
       console.log("End of page");
-      const templateContent = template.content.cloneNode(true).children[0];
+      const templateContent = template.content.cloneNode(true).children[0]; //mindig létrehozunk egy új clone-t
+      //lastRow.insertAdjacentElement("afterend", templateContent); -> ez talan szebb lenne, de nem ezt kérte a feladat
       body.appendChild(templateContent);
       observer.unobserve(lastRow);
       lastRow = templateContent;

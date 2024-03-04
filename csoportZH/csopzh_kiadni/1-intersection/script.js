@@ -30,3 +30,28 @@ const progressProperties = [
     motivationalTextHungarian: "Tárgy teljesítve!",
   },
 ];
+
+const milestones = document.querySelectorAll("section.milestone");
+const motivationTitle = document.querySelector("h1#motivation");
+
+function onObserve(entries) {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      const progressProperty = progressProperties.find((item) => {
+        return item.id === entry.target.id;
+      });
+      document.body.style.backgroundColor = progressProperty.backgroundColor;
+      motivationTitle.innerHTML = progressProperty.motivationalText;
+    }
+  }
+}
+
+const milestoneObserver = new IntersectionObserver(onObserve, {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.5,
+});
+
+milestones.forEach((milestone) => {
+  milestoneObserver.observe(milestone);
+});
